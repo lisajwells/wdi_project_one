@@ -1,0 +1,57 @@
+<!-- routes: "/" "/posts" -->
+
+<html>
+<head>
+	<title>Jackson Heights Board Forum</title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+
+
+</head>
+<body>
+	<header>
+		<h1>JH Boardniks</h1>
+		<h3>For Jackson Heights Co-op Board Members</h3>
+	</header>
+	<div>
+		<h1>All the Posts</h1>
+		<!-- display all posts in reverse chron, 10 to a page -->
+		<% posts.each do |post| %>
+			<div class="post">
+				<h3>subject: <%= post.subject %></h3>
+				<h3>category: <%= post.category["name"] %></h3>
+				<p><%= post.content %></p>
+				<p class ="post_date">created: <%= post.created_at %></p>
+				<p class ="post_date">expiration: <%= post.expiration %></p>
+						<!-- display vote count for each post -->
+						<!-- buttons to vote -->
+				<div class="vote">
+					<form action-""
+
+
+
+					UP DOWN
+				</div>
+
+
+
+			</div>	
+
+
+		<% end %>
+
+
+
+		<!-- see posts by category dropdown "/categories/category-name/posts"-->
+
+
+		<!-- new post button -->
+
+
+
+	</div>
+
+<footer></footer>
+
+</body>
+</html>

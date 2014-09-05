@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Blog Authors</title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+	<div>
+		<p><a href="/authors/new">Add an author</a></p>
+	</div>
+	<div>
+		<ul>
+			<% authors.each do |author| %>
+			<li><a href="/authors/<%= author["id"] %>">
+				<%= author["name"] %></a></li>
+			<% end %>
+		</ul>
+		<p><a href="/">Go home</a></p>
+	</div>
+
+</body>
+</html>

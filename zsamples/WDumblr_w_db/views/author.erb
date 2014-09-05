@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Author <%= author["name"] %> </title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+	<div>
+		<h1><%= author["name"] %>'s Blog Posts</h1>
+		<ul>
+			<% author.posts.each do |post| %>
+			<li><a href="/posts/<%= post["id"] %>">
+				<%= post["title"] %></a></li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<p><a href="/">Go home</a></p>
+		<p><a href="/authors">All authors</a></p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Post <%= post["title"] %> </title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+	<div>
+		<h1><%= post["title"] %></h1>
+		<p>Created: <%= post["created_at"] %></p>
+		<p>Keyword: <%= post["keyword"] %></p>
+		<p><%= post["content"] %></p>
+		<p>&mdash;<a href="/authors/<%= post_author["id"] %>"> <%= post_author["name"] %>
+	</div>
+	<div>
+		<% images.each do |image| %>
+			<img src="<%= image['image_url'] %>">
+		<% end %>
+	</div>
+	<div>
+		<form action="/posts/<%= post["id"] %>/images" method="POST">
+			<input type="hidden">
+			<button>Add Images</button>
+		</form>	
+	</div>
+	<div>
+		<p><a href="/">Go home</a></p>
+		<p><a href="/posts">All posts</a></p>
+	</div>
+
+</body>
+</html>

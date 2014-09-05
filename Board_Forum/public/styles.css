@@ -1,0 +1,92 @@
+/*	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+*/
+
+body {
+	margin-top: 30px;
+	background-color: Silver;
+    background-size: cover;
+	font-family: 'Droid Serif', Georgia, serif;	
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+body div {
+	width: 500px;
+	margin: 0 auto;
+}
+
+div.post {
+	border: 1px solid black;
+	padding: 0 10px;
+
+}
+div.vote {
+
+}
+
+p.post_date {
+
+}
+
+.right {
+	float: right;
+}
+
+header {
+	background-color: DeepSkyBlue;
+	min-height: 100px;
+
+}
+
+footer {
+	background-color: OliveDrab;
+	min-height: 100px;
+}
+
+h1 {
+	color: DarkRed;
+}
+
+body a {
+	color: Brown;
+}
+
+body a:hover {
+	color: Coral;
+}
+li strong {
+	font-weight: 700;
+}
+
+img {
+	width: 200px;
+	border-radius: 8px;
+	border: solid 2px Brown;
+	margin: 8px;
+}
+
+input {
+	display: inline;
+	width: 300px;
+	height: 20px;
+	padding: 3px;
+	border: solid 1px Brown;
+	display: block;
+	margin-top: 6px;
+	font-size: 13px;
+}
+
+button {
+	display: inline;
+}
+
+textarea {
+	width: 300px;
+	padding: 3px;
+	border: solid 1px Brown;
+	display: block;
+	margin: 6px 0;
+	font-size: 13px;
+}

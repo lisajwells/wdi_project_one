@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>New Post</title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+
+</head>
+<body>
+	<div>
+		<h1>Add a new post here</h1>
+		<form action="/posts" method="POST">
+			<input type="text" name="title" placeholder="Post Title" />
+			<input type="text" name="keyword" placeholder="Keyword" />
+			<input type="text" name="created_at" value="<%= Time.now.strftime('%F/%T') %>" />
+			<textarea name="content" rows="6" placeholder="Your blog here."></textarea>
+			<select name="author_id">
+				<% authors.each do |author| %>
+					<option value="<%= author["id"] %>"> <%= author["name"] %></option>
+				<% end %>
+			</select>
+			<button>Submit</button>
+		</form>
+
+		<p><a href="/">Go home</a></p>
+
+
+	</div>
+</body>
+</html>
+

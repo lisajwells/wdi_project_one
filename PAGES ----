@@ -1,0 +1,18 @@
+PAGES ----
+
+*** index.erb
+/ or /posts
+
+paginated post feed
+
+link to categories list
+link to individual post
+
+*** categories.erb
+/?
+
+list of categories with vote count for each
+
+link to individual category
+link to category_new
+button to subscribe page
