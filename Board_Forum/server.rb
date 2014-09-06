@@ -19,13 +19,14 @@ get("/posts") do
   erb(:"index", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
-get("/post") do
-	post = Post.find_by( id: params[:id] )
-  erb(:"posts/post", { locals: { posts: Post.all(), posts: post, comments: Comment.all(), categories: Category.all()  } })
-end
+# get("/post") do
+# 	post = Post.find_by( id: params[:id] )
+#   erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
+# end
 
 get("/posts/:id") do
-  erb(:"posts/post", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	post = Post.find_by( id: params[:id] )
+  	erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/post") do
