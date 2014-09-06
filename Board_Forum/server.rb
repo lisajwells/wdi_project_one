@@ -15,5 +15,6 @@ get("/") do
 end
 
 get("/posts") do
-  erb(:index, { locals: { posts: Post.all() } })
+  erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
+

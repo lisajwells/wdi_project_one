@@ -5,37 +5,49 @@
 	<title>Jackson Heights Board Forum</title>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" type="text/css" href="/styles.css">
-
+<!-- *** I need a post/<%# post["id"] %> route in the server
+*** I need a post/<%# post by categories["id"] %> route in the server -->
 
 </head>
 <body>
 	<header>
 		<h1>JH Boardniks</h1>
 		<h3>For Jackson Heights Co-op Board Members</h3>
+		<!-- navigation here -->
 	</header>
 	<div>
 		<h1>All the Posts</h1>
-		<!-- display all posts in reverse chron, 10 to a page -->
+<!-- display all posts in reverse chron, 10 to a page -->
 		<% posts.each do |post| %>
 			<div class="post">
-				<h3>subject: <%= post.subject %></h3>
-				<h3>category: <%= post.category["name"] %></h3>
+				<h3>subject: <a href="/posts/<%= post["id"] %>"><%= post.subject %></a></h3>
+				<h3>category: <a href="/categories/<%= post["category_id"]%>"><%= post.category["name"] %></a></h3>
 				<p><%= post.content %></p>
+
+<!-- display each previously created comment -->
+				<% post.comments.each do |comment| %>
+					<div class="comment">
+						<p><%= comment["content"] %></p>
+					</div>
+				<% end %>
+
+<!-- display created and expiration  -->
 				<p class ="post_date">created: <%= post.created_at %></p>
 				<p class ="post_date">expiration: <%= post.expiration %></p>
-						<!-- display vote count for each post -->
-						<!-- buttons to vote -->
-				<div class="vote">
+
+
+<!-- display vote count for each post and buttons-->
+<!-- 		<div class="vote">
 					<form action-""
-
-
-
 					UP DOWN
-				</div>
+				</div>-->
 
+
+<!-- subscribe to this post form -->
 
 
 			</div>	
+
 
 
 		<% end %>
@@ -43,15 +55,29 @@
 
 
 		<!-- see posts by category dropdown "/categories/category-name/posts"-->
+		<div class="dropdown">
+			<h3>See all posts in a given category:</h3>
+				<form action="/categories/<%= categories.name %>/posts" method="GET">
+					<select name="name">
+						<% categories.each do |category| %>
+						binding.pry
+							<option value="<%= category.name %>"><%= category.name %></option>
+						<% end %>
+					</select>
+		</div>
 
-
-		<!-- new post button -->
 
 
 
 	</div>
 
-<footer></footer>
+<footer>
+	<!-- new post and new category links -->
+			<div class="link_new">
+				<p><a href="#">Create a new post</a></p>
+				<p><a href="#">Create a new category</a></p>
+			</div>
+</footer>
 
 </body>
 </html>
