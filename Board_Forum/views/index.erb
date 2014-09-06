@@ -44,10 +44,11 @@
 		<!-- see posts by category dropdown -->
 		<div class="dropdown">
 			<h3>See all posts in a given category:</h3>
-				<form action="/categories/<%= categories.name %>/posts" method="GET">
-					<select name="name">
+			<!-- -->
+				<form action="/category_search" method="GET">
+					<select name="id">
 						<% categories.each do |category| %>
-							<option value="<%= category.name %>"><%= category.name %></option>
+							<option value="<%= category.id %>"><%= category.name %></option>
 						<% end %>
 					</select>
 					<input type="submit" value="Submit">

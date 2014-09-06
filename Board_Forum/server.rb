@@ -19,9 +19,13 @@ get("/posts") do
   erb(:"index", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
-get("/posts/:id") do
+get("/post") do
 	post = Post.find_by( id: params[:id] )
-  erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
+  erb(:"posts/post", { locals: { posts: Post.all(), posts: post, comments: Comment.all(), categories: Category.all()  } })
+end
+
+get("/posts/:id") do
+  erb(:"posts/post", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/post") do
@@ -29,9 +33,12 @@ get("/new/post") do
 end
 
 get("/categories/:id/posts") do
-		category = Category.find_by( id: params[:id] )
-	erb(:"categories/category", { locals: { category: category, posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	erb(:"categories/category", { locals: { posts: Post.all(), comments: Comment.all(), category: Category.find_by_id(params[:id])  } })
 end
+
+get("/category_search") do 
+	redirect "/categories/#{params[:id]}/posts"
+end 
 
 get("/new/category") do
 	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
