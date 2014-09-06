@@ -1,3 +1,4 @@
+require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
 require_relative './lib/connection'
@@ -15,6 +16,21 @@ get("/") do
 end
 
 get("/posts") do
-  erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+  erb(:"index", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
+get("/posts/:id") do
+  erb(:"posts/post", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
+
+get("/new/post") do
+	erb(:"posts/post_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
+
+get("/categories/:id/posts") do
+	erb(:"categories/category", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
+
+get("/new/category") do
+	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
