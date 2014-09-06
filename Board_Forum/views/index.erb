@@ -21,16 +21,18 @@
 
 				<p><%= post.content %></p>
 
+<!-- display created and expiration dates -->
+				<p class ="post_date">created: <%= post.created_at %></p>
+				<p class ="post_date">expiration: <%= post.expiration %></p>
+
 <!-- display each previously created comment -->
 				<% post.comments.each do |comment| %>
 					<div class="comment">
 						<p><%= comment["content"] %></p>
+						<p class="post_date"><%= comment["created_at"] %></p>
 					</div>
 				<% end %>
 
-<!-- display created and expiration dates -->
-				<p class ="post_date">created: <%= post.created_at %></p>
-				<p class ="post_date">expiration: <%= post.expiration %></p>
 
 <!-- display vote count for each post and buttons-->
 <!-- 		<div class="vote">

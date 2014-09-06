@@ -19,11 +19,6 @@ get("/posts") do
   erb(:"index", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
-# get("/post") do
-# 	post = Post.find_by( id: params[:id] )
-#   erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
-# end
-
 get("/posts/:id") do
 	post = Post.find_by( id: params[:id] )
   	erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })

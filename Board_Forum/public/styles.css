@@ -82,6 +82,9 @@ div.comment {
 	font-size: 14px;
 	line-height: 18px;
 }
+div.comment.post_date {
+	font-size: 11px;
+}
 div.vote {
 
 }
@@ -135,6 +138,15 @@ h3 {
 body a {
 	color: Brown;
 	font-weight: 700;
+	text-decoration: none;
+}
+body header a {
+	color: DarkRed;
+	font-weight: 400;
+}
+body header a:hover {
+	color: Brown;
+	font-weight: 400;
 }
 
 body a:hover {
