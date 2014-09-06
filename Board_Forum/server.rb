@@ -20,7 +20,8 @@ get("/posts") do
 end
 
 get("/posts/:id") do
-  erb(:"posts/post", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	post = Post.find_by( id: params[:id] )
+  erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/post") do
@@ -28,7 +29,8 @@ get("/new/post") do
 end
 
 get("/categories/:id/posts") do
-	erb(:"categories/category", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+		category = Category.find_by( id: params[:id] )
+	erb(:"categories/category", { locals: { category: category, posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/category") do
