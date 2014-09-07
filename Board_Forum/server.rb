@@ -82,14 +82,16 @@ post("/new/category") do
 		name: params["name"],
 		description: params["description"]
 	}
+# here I'm going to try to create on conditional
+# categories.any? {|x| x[:name] == "Boiler"} 
 
-	# if 
-	# 	category_hash["name"] #exists
-	# 	# don't make it again
-	# 	message = "That category already exists"
-	# else
-	Category.create(category_hash)
-	# end
+	categories = Category.all
+	if 
+		categories.any? {|x| x[:name] == params["name"]}
+		# alert "That category already exists"
+	else
+		Category.create(category_hash)
+	end
 
 	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
