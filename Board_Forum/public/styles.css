@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,10 +47,11 @@ table {
 }
 
 
-
 /*	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" type="text/css" href="/styles.css">
 */
+
+/*josefin 100,300,400,600,700 */
 
 body {
 	background-color: Silver;
@@ -117,20 +117,23 @@ footer {
 	background-color: OliveDrab;
 	min-height: 100px;
 	padding-top: 10px;
+	margin: 30px 0 0 0;
 }
 
-h1 {
+h1, h2, h3 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: bold;
 	color: DarkRed;
+}
+h1 {
 	font-size: 40px;
 	line-height: 46px;
 }
 h2 {
-	color: Black;
 	font-size: 30px;
 	line-height: 46px;
 }
 h3 {
-	color: DarkRed;
 	font-size: 16px;
 	line-height: 24px;
 }
@@ -140,11 +143,11 @@ body a {
 	font-weight: 700;
 	text-decoration: none;
 }
-body header a {
+header a {
 	color: DarkRed;
 	font-weight: 400;
 }
-body header a:hover {
+header a:hover {
 	color: Brown;
 	font-weight: 400;
 }
@@ -177,7 +180,7 @@ input {
 
 button {
 	display: inline;
-	background-color: Coral;
+	background-color: #b7dfb7;
 }
 
 textarea {

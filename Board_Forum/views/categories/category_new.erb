@@ -2,6 +2,7 @@
 <head>
 	<title>JH Board Forum: create a category</title>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 
@@ -12,13 +13,15 @@
 	</header>
 
 	<div>
-		<h1>Create a New Category</h1>
+		<h2>Create a New Category</h2>
 		<form action="/new/category" method="POST">
 			<input type="text" name="name" placeholder="New Category">
 			<input type="text" name="description" placeholder="Describe this category">
 			<button>Submit</button>
 		</form>
-	
+
+		<h2>Existing Categories</h2>
+		<h3>click to see associated posts</h3>
 		<ul>
 			<% categories.each do |category| %>
 				<li><a href="/categories/<%= category.id %>/posts"><%= category.name %></a></li>

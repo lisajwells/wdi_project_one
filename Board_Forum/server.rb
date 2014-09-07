@@ -16,12 +16,13 @@ get("/") do
 end
 
 get("/posts") do
-  erb(:"index", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+  erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/posts/:id") do
 	post = Post.find_by( id: params[:id] )
-  	erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
+  	
+  erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/post") do
@@ -46,13 +47,24 @@ post("/new/category") do
 		description: params["description"]
 	}
 
-	if 
-		category_hash["name"] #exists
-		# don't make it again
-		message = "That category already exists"
-	else
-		Category.create(category_hash)
-	end
+	# if 
+	# 	category_hash["name"] #exists
+	# 	# don't make it again
+	# 	message = "That category already exists"
+	# else
+	Category.create(category_hash)
+	# end
 
 	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
+
+post("/new/post") do
+	post_hash = {
+		category_id: params["category_id"],
+		subject: params["subject"],
+		content: params["content"]
+	}
+	Post.create(post_hash)
+
+	erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end

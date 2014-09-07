@@ -2,6 +2,7 @@
 <head>
 	<title>JH Board Forum: <%= post.subject %></title>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 
@@ -12,7 +13,7 @@
 	</header>
 
 	<div>
-		<h1><%= post.subject %></h1>
+		<h2><%= post.subject %></h2>
 		<h3>category: <a href="/categories/<%= post["category_id"] %>/posts"><%= post.category["name"] %></a></h3>
 
 		<div class="post">

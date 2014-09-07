@@ -2,6 +2,7 @@
 <head>
 	<title>Jackson Heights Board Forum</title>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 
@@ -12,7 +13,7 @@
 	</header>
 
 	<div>
-		<h1>All the Posts</h1>
+		<h2>All the Posts</h2>
 <!-- display all posts in reverse chron, 10 to a page -->
 		<% posts.each do |post| %>
 			<div class="post">
@@ -48,12 +49,13 @@
 			<h3>See all posts in a given category:</h3>
 			<!-- -->
 				<form action="/category_search" method="GET">
-					<select name="id">
-						<% categories.each do |category| %>
-							<option value="<%= category.id %>"><%= category.name %></option>
-						<% end %>
-					</select>
-					<input type="submit" value="Submit">
+				<select name="id">
+					<% categories.each do |category| %>
+						<option value="<%= category.id %>"><%= category.name %></option>
+					<% end %>
+				</select>
+				<button>Submit</button>
+			</form>
 		</div>
 
 

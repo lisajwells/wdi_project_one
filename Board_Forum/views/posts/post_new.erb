@@ -1,1 +1,33 @@
-<p>this page will create a new post</p>
+<html>
+<head>
+	<title>JH Board Forum: create a post</title>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>	
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+	<header>
+		<h1><a href="/posts">JH Boardniks</a></h1>
+		<h3>For Jackson Heights Co-op Board Members</h3>
+	</header>
+
+	<div>
+		<h2>Create a New Post</h2>
+<!-- choose category from dropdown menu of existing categories-->
+		<form action="/new/post" method="POST">
+			<select name="category_id">
+				<% categories.each do |category| %>
+					<option value="<%= category.id %>"><%= category.name %></option>
+				<% end %>
+			</select>
+
+			<input type="text" name="subject" placeholder="The subject of the post">
+			<input type="textarea" name="content" placeholder="What's on your mind...">
+			<button>Submit</button>
+		</form>
+
+	</div>
+
+</body>
+</html>
