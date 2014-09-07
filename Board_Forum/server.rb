@@ -16,7 +16,7 @@ get("/") do
 end
 
 get("/posts") do
-  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
+  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1)  } })
 end
 
 get("/posts/:id") do
@@ -44,8 +44,8 @@ end
 post("/new/post") do
 
 	case params["expiration"]
-	when "never"
-		post_expiration = 29990101
+	when "never"						# 29990101
+		post_expiration = Date.new 2999, 1, 1 
 	when "one_month"
 		post_expiration = Date.today >> 1
 	when "three_months"
@@ -62,7 +62,7 @@ post("/new/post") do
 	}
 	Post.create(post_hash)
 
-	erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
+	  redirect "/posts"
 end
 
 get("/categories/:id/posts") do

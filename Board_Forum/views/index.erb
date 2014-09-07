@@ -15,7 +15,6 @@
 	<div>
 		<h2>All the Posts</h2>
 <!-- display all posts in reverse chron, 10 to a page -->
-<!-- # example Client.order(created_at: :desc) -->
 		<% posts.each do |post| %>
 			<div class="post">
 				<h3>subject: <a href="/posts/<%= post["id"] %>"><%= post.subject %></a></h3>
@@ -25,16 +24,16 @@
 
 <!-- display created and expiration dates -->
 				<p class ="post_date">created: <%= post.created_at %></p>
-				<p class ="post_date">expiration: <%= post.expiration %></p>
-
+				<% unless post[:expiration] == never_date %>
+					<p class ="post_date">expiration: <%= post.expiration %></p>
+				<% end %>
 <!-- display each previously created comment -->
 				<% post.comments.each do |comment| %>
 					<div class="comment">
 						<p><%= comment["content"] %></p>
 						<p class="post_date"><%= comment["created_at"] %></p>
 					</div>
-				<% end %>
-
+		<% end %>
 
 <!-- display vote count for each post and buttons-->
 <!-- 		<div class="vote">

@@ -74,7 +74,7 @@ div.post {
 	margin: 20px 0;
 }
 div.comment {
-	background-color: LightCyan;
+	background-color: #C9E9F4;
 	width: 500px;
 	border: 10px Coral;
 	padding: 10px;
@@ -91,7 +91,6 @@ div.vote {
 
 div.dropdown {
 	margin-bottom: 10px;
-
 }
 
 div.link_new {
