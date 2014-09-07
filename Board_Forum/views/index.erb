@@ -15,6 +15,7 @@
 	<div>
 		<h2>All the Posts</h2>
 <!-- display all posts in reverse chron, 10 to a page -->
+<!-- # example Client.order(created_at: :desc) -->
 		<% posts.each do |post| %>
 			<div class="post">
 				<h3>subject: <a href="/posts/<%= post["id"] %>"><%= post.subject %></a></h3>

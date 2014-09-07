@@ -16,21 +16,21 @@ get("/") do
 end
 
 get("/posts") do
-  erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/posts/:id") do
 	post = Post.find_by( id: params[:id] )
   	
-  erb(:"posts/post", { locals: { posts: Post.all(), post: post, comments: Comment.all(), categories: Category.all()  } })
+  erb(:"posts/post", { locals: { posts: Post.all.order(created_at: :desc), post: post, comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/new/post") do
-	erb(:"posts/post_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	erb(:"posts/post_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
 
 get("/categories/:id/posts") do
-	erb(:"categories/category", { locals: { posts: Post.all(), comments: Comment.all(), category: Category.find_by_id(params[:id])  } })
+	erb(:"categories/category", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), category: Category.find_by_id(params[:id])  } })
 end
 
 get("/category_search") do 
@@ -38,7 +38,7 @@ get("/category_search") do
 end 
 
 get("/new/category") do
-	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
 
 post("/new/category") do
@@ -55,7 +55,7 @@ post("/new/category") do
 	Category.create(category_hash)
 	# end
 
-	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
 
 post("/new/post") do
@@ -66,5 +66,5 @@ post("/new/post") do
 	}
 	Post.create(post_hash)
 
-	erb(:index, { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+	erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
