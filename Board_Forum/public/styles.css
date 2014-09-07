@@ -145,11 +145,11 @@ body a {
 }
 header a {
 	color: DarkRed;
-	font-weight: 400;
+	font-weight: bold;
 }
 header a:hover {
 	color: Brown;
-	font-weight: 400;
+	font-weight: bold;
 }
 
 body a:hover {

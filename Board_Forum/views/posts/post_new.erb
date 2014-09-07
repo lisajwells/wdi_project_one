@@ -15,7 +15,18 @@
 	<div>
 		<h2>Create a New Post</h2>
 <!-- choose category from dropdown menu of existing categories-->
+<!-- 	<form>
+  <label for="favoritefood">Favorite food</label>
+  <select name="favoritefood" id="favoritefood">
+    <option>Cheese</option>
+    <option>Egg</option>
+    <option>Cabbage</option>
+    ⋮
+  </select>
+</form> -->
+
 		<form action="/new/post" method="POST">
+			<label for="category_id">Select a category:</label>
 			<select name="category_id">
 				<% categories.each do |category| %>
 					<option value="<%= category.id %>"><%= category.name %></option>
