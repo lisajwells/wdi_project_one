@@ -25,6 +25,8 @@
 				<% post.comments.each do |comment| %>
 					<div class="comment">
 						<p><%= comment["content"] %></p>
+						<p class="post_date"><%= comment["created_at"] %></p>
+
 					</div>
 				<% end %>
 

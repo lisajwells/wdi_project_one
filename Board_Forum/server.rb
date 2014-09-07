@@ -39,3 +39,20 @@ end
 get("/new/category") do
 	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
 end
+
+post("/new/category") do
+	category_hash = {
+		name: params["name"],
+		description: params["description"]
+	}
+
+	if 
+		category_hash["name"] #exists
+		# don't make it again
+		message = "That category already exists"
+	else
+		Category.create(category_hash)
+	end
+
+	erb(:"categories/category_new", { locals: { posts: Post.all(), comments: Comment.all(), categories: Category.all()  } })
+end
