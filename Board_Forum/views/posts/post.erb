@@ -32,11 +32,14 @@
 			<% end %>
 
 	<!-- form to create comment -->
-<!-- 				<form action="/posts/post["id"]/edit" method="POST">
-				<input type="textarea" name="comment" placeholder="Your comment here.">
-				<button>Submit Comment</button>
-			</form>
--->
+			<div class="comment">
+				<h3>Comment here:</h3>
+					<form action="/posts/<%= post.id %>/comment" method="POST">
+					<input type="textarea" name="content" placeholder="Your comment here.">
+					<button>Submit Comment</button>
+				</form>
+			</div>
+
 	</div>
 <footer>
 	<!-- new post and new category links -->
