@@ -42,10 +42,29 @@ get("/new/post") do
 end
 
 post("/new/post") do
+
+#	Date.today >> 1  # for one month
+
+	if 
+		params["expiration"] == "never"
+		post_expiration = 29990101
+	elsif 
+		params["expiration"] == "one_month"
+		post_expiration = Date.today >> 1
+	elsif
+		params["expiration"] == "three_months"
+		post_expiration = Date.today >> 3
+	else
+		params["expiration"] == "one_year"
+		post_expiration = Date.today >> 12
+	end
+
+
 	post_hash = {
 		category_id: params["category_id"],
 		subject: params["subject"],
-		content: params["content"]
+		content: params["content"],
+		expiration: post_expiration
 	}
 	Post.create(post_hash)
 
