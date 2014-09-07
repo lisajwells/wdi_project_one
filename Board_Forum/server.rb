@@ -34,10 +34,7 @@ post("/posts/:id/comment") do
 
 	Comment.create(comment_hash)
 
-	#redirect "/posts/:id"
-
-  	
-  erb(:"posts/post", { locals: { posts: Post.all.order(created_at: :desc), post: post, comments: Comment.all(), categories: Category.all()  } })
+	redirect "/posts/#{params[:id]}"
 end
 
 get("/new/post") do
