@@ -97,21 +97,18 @@ post("/new/category") do
 end
 
 delete("/category_delete") do 
-	redirect "/categories/#{params[:id]}/posts"
-end 
+ 	category = Category.find_by( {id: params[:id]} )
 
-# delete("/categories/:id") do 
-# 	category = Category.find_by( {id: params[:id]} )
-# 	if # (this category id exists in posts) OR
-# 		# (subscribers contains this foreign key AND kind: category)
-# 		# message = "You cannot delete a category with associations"
+	# if 
+	# (this category_id exists in posts) 
+	#	posts.any? {|post| post[:category_id] == params[:id] }
+# message = "You cannot delete a category with associations"
 # 	else
 # 		category.destroy
 # 	end
 
-# 	redirect "/new/category"
-# end
-
+ 	redirect "/new/category"
+end 
 
 
 

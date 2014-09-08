@@ -13,16 +13,7 @@
 	</header>
 
 <div class="container">
-	<div class="right">
-		<h2>Create a New Category</h2>
-		<form action="/new/category" method="POST">
-			<input type="text" name="name" placeholder="New Category">
-			<input type="text" name="description" placeholder="Describe this category">
-			<button>Submit</button>
-		</form>
-	</div>
-
-	<div class="left">
+	<div class="300" id="existing">
 		<h2>Existing Categories</h2>
 		<h3>click to see associated posts</h3>
 		<ul>
@@ -32,8 +23,17 @@
 		</ul>
 	</div>
 
+	<div class="right" class="300">
+		<h2>Create a New Category</h2>
+		<form action="/new/category" method="POST">
+			<input type="text" name="name" placeholder="New Category">
+			<input type="text" name="description" placeholder="Describe this category">
+			<button>Submit</button>
+		</form>
+	</div>
+
 		<!-- delete category dropdown -->
-		<div class="dropdown" class="right">
+		<div class="dropdown" class="right" class="200">
 			<h2>Delete a Category</h2>
 			<h3>as long as there's no post in the category</h3>
 			<!-- -->
