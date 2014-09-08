@@ -97,20 +97,17 @@ post("/new/category") do
 end
 
 delete("/category_delete") do 
-  	category = Category.find_by( {id: params[:id]} )
- 	  posts = Post.all
+	category = Category.find_by( {id: params[:id]} )
 
- 	  if 
-#	(this category_id exists in posts) 
-		posts.any? {|post| post[:category_id] == params[:id] }
-		erb(:"categories/category_nodele")
-	else
+ 	if category.posts.length.zero?
 		category.destroy
+		redirect "/new/category"
+	else
+		erb(:"categories/category_nodele")
 	end
-
- 	redirect "/new/category"
-# binding.pry
 end 
 
 
+
+ 	# if posts.any? {|post| post[:category_id] == category[:id]} #	(this category_id exists in posts) 
 
