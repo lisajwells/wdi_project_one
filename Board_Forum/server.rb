@@ -109,5 +109,5 @@ end
 
 
 
- 	# if posts.any? {|post| post[:category_id] == category[:id]} #	(this category_id exists in posts) 
+ 	# if posts.any? {|post| post[:category_id] == category[:id]} 
 
