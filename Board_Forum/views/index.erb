@@ -15,7 +15,7 @@
 	<div>
 		<h2>All the Posts</h2>
 <!-- display all posts in reverse chron, 10 to a page -->
-		<% posts[first_post_index,10].each do |post| %>
+		<% posts[post_index,10].each do |post| %>
 			<div class="post">
 				<h3>subject: <a href="/posts/<%= post["id"] %>"><%= post.subject %></a></h3>
 				<h3>category: <a href="/categories/<%= post["category_id"] %>/posts"><%= post.category["name"] %></a></h3>
@@ -27,24 +27,26 @@
 				<% unless post[:expiration] == never_date %>
 					<p class ="post_date">expiration: <%= post.expiration %></p>
 				<% end %>
+
 <!-- display each previously created comment -->
 				<% post.comments.each do |comment| %>
 					<div class="comment">
 						<p><%= comment["content"] %></p>
 						<p class="post_date"><%= comment["created_at"] %></p>
 					</div>
-		<% end %>
-
-
-
-<!-- display vote count for each post and buttons-->
-<!-- 		<div class="vote">
-					<form action-""
-					UP DOWN
-				</div>-->
+				<% end %>
 			</div>	
-
 		<% end %>
+
+<!-- form to contain next and previous buttons -->
+		<form action="/posts" method="GET">
+			<input type="hidden" name="index" value="-10">
+			<button>previous 10</button>
+		</form>
+		<form action="/posts" method="GET">
+			<input type="hidden" name="index" value="10">
+			<button>next 10</button>
+		</form>
 
 		<!-- see posts by category dropdown -->
 		<div class="dropdown">
@@ -59,9 +61,6 @@
 				<button>Submit</button>
 			</form>
 		</div>
-
-
-
 
 	</div>
 

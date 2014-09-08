@@ -11,15 +11,19 @@ after do
   ActiveRecord::Base.connection.close
 end
 
+post_index = 0
+
 get("/") do
   redirect "/posts"
 end
 
 get("/posts") do
-	# this is where conor put his code,
-	# if conor lived in my world 
-	first_post_index = 0
-  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1), first_post_index: first_post_index  } })
+if params[:index] == nil
+	post_index = 0
+else post_index += params[:index].to_i
+end
+
+  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1), post_index: post_index  } })
 end
 
 get("/posts/:id") do
