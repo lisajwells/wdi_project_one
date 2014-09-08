@@ -96,19 +96,21 @@ post("/new/category") do
 	end
 end
 
-# delete("/category_delete") do 
-#  	category = Category.find_by( {id: params[:id]} )
-# 	# if 
-# 	# (this category_id exists in posts) 
-# 	#	posts.any? {|post| post[:category_id] == params[:id] }
-# # message = "You cannot delete a category with associations"
-# # 	else
-# # 		category.destroy
-# # 	end
+delete("/category_delete") do 
+  	category = Category.find_by( {id: params[:id]} )
+ 	  posts = Post.all
 
-#  	redirect "/new/category"
+ 	  if 
+#	(this category_id exists in posts) 
+		posts.any? {|post| post[:category_id] == params[:id] }
+		erb(:"categories/category_nodele")
+	else
+		category.destroy
+	end
+
+ 	redirect "/new/category"
 # binding.pry
-# end 
+end 
 
 
 

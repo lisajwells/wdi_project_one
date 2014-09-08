@@ -41,7 +41,7 @@
 			<h3>as long as there's no post in the category</h3>
 			<!-- -->
 				<form action="/category_delete" method="POST">
-		    <input type="hidden" name="_method" value="PUT">
+		    <input type="hidden" name="_method" value="DELETE">
 				<select name="id">
 					<% categories.each do |category| %>
 						<option value="<%= category.id %>"><%= category.name %></option>
