@@ -89,6 +89,10 @@ div.vote {
 
 }
 
+div.container {
+
+}
+
 div.dropdown {
 	margin-bottom: 10px;
 }
@@ -103,6 +107,10 @@ p.post_date {
 
 .right {
 	float: right;
+}
+
+.left {
+	float: left;
 }
 
 header {

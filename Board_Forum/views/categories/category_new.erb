@@ -12,14 +12,17 @@
 		<h3>For Jackson Heights Co-op Board Members</h3>
 	</header>
 
-	<div>
+<div class="container">
+	<div class="right">
 		<h2>Create a New Category</h2>
 		<form action="/new/category" method="POST">
 			<input type="text" name="name" placeholder="New Category">
 			<input type="text" name="description" placeholder="Describe this category">
 			<button>Submit</button>
 		</form>
+	</div>
 
+	<div class="left">
 		<h2>Existing Categories</h2>
 		<h3>click to see associated posts</h3>
 		<ul>
@@ -27,12 +30,30 @@
 				<li><a href="/categories/<%= category.id %>/posts"><%= category.name %></a></li>
 			<% end %>
 		</ul>
-
 	</div>
 
+		<!-- delete category dropdown -->
+		<div class="dropdown" class="right">
+			<h2>Delete a Category</h2>
+			<h3>as long as there's no post in the category</h3>
+			<!-- -->
+				<form action="/category_delete" method="POST">
+		    <input type="hidden" name="_method" value="PUT">
+				<select name="id">
+					<% categories.each do |category| %>
+						<option value="<%= category.id %>"><%= category.name %></option>
+					<% end %>
+				</select>
+				<button>Submit</button>
+			</form>
+		</div>
+
+</div>
+
 <footer>
-	<!-- new post and new category links -->
+	<!-- new post  link -->
 			<div class="link_new">
+				<p><a href="/new/post">Create a new post</a></p>
 			</div>
 </footer>
 

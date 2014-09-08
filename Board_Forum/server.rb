@@ -96,6 +96,10 @@ post("/new/category") do
 	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
 
+delete("/category_delete") do 
+	redirect "/categories/#{params[:id]}/posts"
+end 
+
 # delete("/categories/:id") do 
 # 	category = Category.find_by( {id: params[:id]} )
 # 	if # (this category id exists in posts) OR
