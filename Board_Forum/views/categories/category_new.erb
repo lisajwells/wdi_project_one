@@ -30,6 +30,9 @@
 			<input type="text" name="description" placeholder="Describe this category">
 			<button>Submit</button>
 		</form>
+		<% if params["message"]%>
+			<p><%= message %></p>
+		<% end %>
 	</div>
 
 		<!-- delete category dropdown -->

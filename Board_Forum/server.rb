@@ -83,32 +83,32 @@ post("/new/category") do
 		description: params["description"]
 	}
 
-# create on condition that it doesn't already exist
+# **** create on condition that it doesn't already exist
 	categories = Category.all
 	if 
 		categories.any? {|x| x[:name] == params["name"]}
-		# alert "That category already exists"
-	#	message = "That category already exists."
+#		message = "That category already exists."
+		erb(:"categories/category_exists")
 	else
 		Category.create(category_hash)
-	end
 
-	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
+	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), message: message  } })
+	end
 end
 
-delete("/category_delete") do 
- 	category = Category.find_by( {id: params[:id]} )
+# delete("/category_delete") do 
+#  	category = Category.find_by( {id: params[:id]} )
+# 	# if 
+# 	# (this category_id exists in posts) 
+# 	#	posts.any? {|post| post[:category_id] == params[:id] }
+# # message = "You cannot delete a category with associations"
+# # 	else
+# # 		category.destroy
+# # 	end
 
-	# if 
-	# (this category_id exists in posts) 
-	#	posts.any? {|post| post[:category_id] == params[:id] }
-# message = "You cannot delete a category with associations"
-# 	else
-# 		category.destroy
-# 	end
-
- 	redirect "/new/category"
-end 
+#  	redirect "/new/category"
+# binding.pry
+# end 
 
 
 
