@@ -62,7 +62,7 @@ post("/new/post") do
 	}
 	Post.create(post_hash)
 
-	  redirect "/posts"
+	redirect "/posts"
 end
 
 get("/categories/:id/posts") do
@@ -82,17 +82,32 @@ post("/new/category") do
 		name: params["name"],
 		description: params["description"]
 	}
-# here I'm going to try to create on conditional
-# categories.any? {|x| x[:name] == "Boiler"} 
 
+# create on condition that it doesn't already exist
 	categories = Category.all
 	if 
 		categories.any? {|x| x[:name] == params["name"]}
 		# alert "That category already exists"
+	#	message = "That category already exists."
 	else
 		Category.create(category_hash)
 	end
 
 	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 end
+
+# delete("/categories/:id") do 
+# 	category = Category.find_by( {id: params[:id]} )
+# 	if # (this category id exists in posts) OR
+# 		# (subscribers contains this foreign key AND kind: category)
+# 		# message = "You cannot delete a category with associations"
+# 	else
+# 		category.destroy
+# 	end
+
+# 	redirect "/new/category"
+# end
+
+
+
 
