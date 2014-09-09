@@ -50,11 +50,12 @@
 			<% end %>
 
 <!-- **** if it's last page , dont display next button -->
-			<!-- if database.length -->
+		<% unless next_button == false %>
 			<form action="/posts" method="GET">
 				<input type="hidden" name="index" value="10">
 				<button>next 10</button>
 			</form>
+		<% end %>
 
 		</div>
 

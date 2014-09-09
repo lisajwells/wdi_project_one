@@ -25,9 +25,22 @@ else post_index += params[:index].to_i
 end
 
 posts = Post.all.order(created_at: :desc)
+# reset to zero if by refresh or something post_index gets too big
+if post_index > posts.length
+	post_index = 0
+end
+
 page = posts[post_index, 10]
 
-  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1), post_index: post_index, page: page  } })
+if posts.length - post_index <= 10
+	next_button = false
+ end
+ #binding.pry
+	# if page.length < 10
+ #     next_button = false
+ #   end
+  erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1), post_index: post_index, page: page, next_button: next_button } })
+     
 end
 
 get("/posts/:id") do
