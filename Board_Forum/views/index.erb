@@ -15,7 +15,7 @@
 	<div>
 		<h2>All the Posts</h2>
 <!-- display all posts in reverse chron, 10 to a page -->
-		<% posts[post_index,10].each do |post| %>
+		<% page.each do |post| %>
 			<div class="post">
 				<h3>subject: <a href="/posts/<%= post["id"] %>"><%= post.subject %></a></h3>
 				<h3>category: <a href="/categories/<%= post["category_id"] %>/posts"><%= post.category["name"] %></a></h3>
@@ -39,14 +39,16 @@
 		<% end %>
 
 <!-- form to contain next and previous buttons -->
-		<form action="/posts" method="GET">
-			<input type="hidden" name="index" value="-10">
-			<button>previous 10</button>
-		</form>
-		<form action="/posts" method="GET">
-			<input type="hidden" name="index" value="10">
-			<button>next 10</button>
-		</form>
+		<div class="paginate">
+			<form action="/posts" method="GET">
+				<input type="hidden" name="index" value="-10">
+				<button>previous 10</button>
+			</form>
+			<form action="/posts" method="GET">
+				<input type="hidden" name="index" value="10">
+				<button>next 10</button>
+			</form>
+		</div>
 
 		<!-- see posts by category dropdown -->
 		<div class="dropdown">

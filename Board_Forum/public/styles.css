@@ -134,6 +134,14 @@ p.post_date {
 	float: left;
 }
 
+div.paginate {
+	margin-bottom: 20px;
+}
+
+div.paginate form {
+	display: inline;
+}
+
 header {
 	background-color: #4ab7db;
 	min-height: 100px;
