@@ -35,10 +35,7 @@ page = posts[post_index, 10]
 if posts.length - post_index <= 10
 	next_button = false
  end
- #binding.pry
-	# if page.length < 10
- #     next_button = false
- #   end
+
   erb(:index, { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), never_date: Date.new(2999, 1, 1), post_index: post_index, page: page, next_button: next_button } })
      
 end
@@ -111,12 +108,12 @@ post("/new/category") do
 	categories = Category.all
 	if 
 		categories.any? {|x| x[:name] == params["name"]}
-#		message = "That category already exists."
+
 		erb(:"categories/category_exists")
 	else
 		Category.create(category_hash)
 
-	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all(), message: message  } })
+	erb(:"categories/category_new", { locals: { posts: Post.all.order(created_at: :desc), comments: Comment.all(), categories: Category.all()  } })
 	end
 end
 
