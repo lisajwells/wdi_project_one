@@ -42,8 +42,15 @@ end
 
 get("/posts/:id") do
 	post = Post.find_by( id: params[:id] )
+# don't display create comment if expired
+	if post[:expiration] < Date.today
+		expired = true
+	else 
+		expired = false
+	end
   	
-  erb(:"posts/post", { locals: { posts: Post.all.order(created_at: :desc), post: post, comments: Comment.all(), categories: Category.all()  } })
+  erb(:"posts/post", { locals: { expired: expired, posts: Post.all.order(created_at: :desc), post: post, comments: Comment.all(), categories: Category.all()  } })
+binding.pry
 end
 
 post("/posts/:id/comment") do
