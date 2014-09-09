@@ -40,14 +40,22 @@
 
 <!-- form to contain next and previous buttons -->
 		<div class="paginate">
-			<form action="/posts" method="GET">
-				<input type="hidden" name="index" value="-10">
-				<button>previous 10</button>
-			</form>
+
+<!-- if it's page 1, dont display previous button -->
+			<% if post_index != 0 %>
+				<form action="/posts" method="GET">
+					<input type="hidden" name="index" value="-10">
+					<button>previous 10</button>
+				</form>
+			<% end %>
+
+<!-- **** if it's last page , dont display next button -->
+			<!-- if database.length -->
 			<form action="/posts" method="GET">
 				<input type="hidden" name="index" value="10">
 				<button>next 10</button>
 			</form>
+
 		</div>
 
 		<!-- see posts by category dropdown -->

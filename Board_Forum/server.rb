@@ -17,11 +17,13 @@ get("/") do
   redirect "/posts"
 end
 
-get("/posts") do
+get("/posts") do 
+
 if params[:index] == nil || params[:index] == "/posts"
 	post_index = 0
 else post_index += params[:index].to_i
 end
+
 posts = Post.all.order(created_at: :desc)
 page = posts[post_index, 10]
 
