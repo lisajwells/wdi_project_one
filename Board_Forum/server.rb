@@ -50,7 +50,6 @@ get("/posts/:id") do
 	end
   	
   erb(:"posts/post", { locals: { expired: expired, posts: Post.all.order(created_at: :desc), post: post, comments: Comment.all(), categories: Category.all()  } })
-binding.pry
 end
 
 post("/posts/:id/comment") do

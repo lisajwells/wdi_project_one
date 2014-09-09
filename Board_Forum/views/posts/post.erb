@@ -31,13 +31,17 @@
 				</div>
 			<% end %>
 
-	<!-- form to create comment -->
+	<!-- form to create comment if not expired-->
 			<div class="comment">
+			<% if expired == false %>
 				<h3>Comment here:</h3>
 					<form action="/posts/<%= post.id %>/comment" method="POST">
 					<input type="textarea" name="content" placeholder="Your comment here.">
 					<button>Submit Comment</button>
 				</form>
+			<% else %>
+				<h3>Chance to comment has expired</h3>
+			<% end %>
 			</div>
 
 	</div>
